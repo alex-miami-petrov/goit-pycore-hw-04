@@ -45,13 +45,15 @@ def show_phone(args: list, contacts: dict) -> str:
     if len(args) != 1:
         return "Invalid command. Usage: phone [ім'я]"
     
-    name = args[0]
+    name_lower = args[0].lower()
 
-    if name in contacts:
-        return contacts[name]
+    for stored_name, phone in contacts.items():
+
+        if name_lower == stored_name.lower():
+            return phone
     
-    else:
-        return "Contact not found."
+        
+    return "Contact not found."
     
 def show_all(contacts: dict) -> str:
 
